@@ -44,10 +44,25 @@ public class Tester {
     s4.add(11);
     s4.add(12);
 
-  //  SortableLinkedList[] sbuckets = {s2, s3, s4};
-  //  Radix.merge(s1, sbuckets);
-  MyLinkedList[] mbuckets = {m2, m3, m4};
-  Radix.merge(m1, mbuckets);
+  SortableLinkedList[] sbuckets = {s2, s3, s4};
+  Radix.merge(s1, sbuckets);
+  //MyLinkedList[] mbuckets = {m2, m3, m4};
+  //Radix.merge(m1, mbuckets);
+
+  SortableLinkedList radixBucket = new SortableLinkedList();
+  radixBucket.add(121);
+  radixBucket.add(232);
+  radixBucket.add(4000);
+  radixBucket.add(52);
+  radixBucket.add(34);
+  radixBucket.add(33);
+  radixBucket.add(546);
+  radixBucket.add(77);
+  radixBucket.add(888);
+
+  System.out.println("==== Radix Sort ====");
+  System.out.println("Original List to Sort: " + radixBucket.toString());
+  Radix.radixSortSimple(radixBucket);
 
   }
 }
