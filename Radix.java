@@ -27,6 +27,7 @@ public class Radix {
 
   public static void radixSortSimple(SortableLinkedList data) {
     // get max width of integers
+
     int maxNum = 0;
     for (int i = 0; i < data.size(); i++) {
       if (data.get(i) > maxNum) {
@@ -45,19 +46,22 @@ public class Radix {
         buckets[ii] = new SortableLinkedList();
       }
 
-      SortableLinkedList output = new SortableLinkedList();
+      //SortableLinkedList output = new SortableLinkedList();  don't do this.
+      int temp_size = data.size();
 
-      for (int j = 0; j < data.size(); j++) {
-        int lenNum = length(data.get(j));
-        int digit = nth(data.get(j), lenNum - i -1);
+      for (int j = 0; j < temp_size; j++) {
+        int tmp = data.remove(0);
+        int lenNum = length(tmp);
+        int digit = nth(tmp, lenNum - i -1);
         //System.out.println("j is: " + j + " digit is: " + digit);
-        buckets[digit].add(data.get(j));
+        buckets[digit].add(tmp);
+
       }
 
-      merge(output, buckets);
-      data = output;
+      merge(data, buckets);
 
     }
+
     //System.out.println("Final Result = " + data.toString());
   }
 }
